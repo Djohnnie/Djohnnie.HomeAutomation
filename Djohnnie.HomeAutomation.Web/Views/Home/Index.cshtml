@@ -1,0 +1,279 @@
+﻿<environment names="Development">
+    <link rel="stylesheet" href="~/lib/datatables/media/css/dataTables.bootstrap.css" asp-append-version="true" />
+</environment>
+<environment names="Staging,Production">
+    <link rel="stylesheet" href="~/lib/datatables/media/css/dataTables.bootstrap.min.css" asp-append-version="true" />
+</environment>
+<environment names="Development">
+    <script src="~/lib/datatables/media/js/jquery.dataTables.js" asp-append-version="true"></script>
+    <script src="~/lib/datatables/media/js/dataTables.bootstrap.js" asp-append-version="true"></script>
+    <script src="~/lib/chart.js/dist/Chart.bundle.js" asp-append-version="true"></script>
+</environment>
+<environment names="Staging,Production">
+    <script src="~/lib/datatables/media/js/jquery.dataTables.min.js" asp-append-version="true"></script>
+    <script src="~/lib/datatables/media/js/dataTables.bootstrap.min.js" asp-append-version="true"></script>
+    <script src="~/lib/chart.js/dist/Chart.bundle.min.js" asp-append-version="true"></script>
+</environment>
+
+<div class="row">
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-green"><i class="fas fa-plug"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Elektriciteitsverbruik</span>
+                <span class="info-box-number">1267<small>W</small></span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-red"><i class="fas fa-thermometer-half"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Verwarming</span>
+                <span class="info-box-number">22<small>°C</small></span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-yellow"><i class="far fa-lightbulb"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Verlichting</span>
+                <span class="info-box-number">1<small>/3</small></span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-blue"><i class="fas fa-power-off"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Stopcontacten</span>
+                <span class="info-box-number">2<small>/3</small></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="box">
+    <div class="box-header with-border">
+        <h3 class="box-title"><i class="fas fa-plug"></i> Elektriciteitsverbruik</h3>
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                <i class="fa fa-minus"></i>
+            </button>
+        </div>
+    </div>
+    <div class="box-body">
+        <div class="chart">
+            <canvas id="energyChart"></canvas>
+        </div>
+    </div>
+    <div class="box-footer">
+        <div class="row">
+            <div class="col-sm-3 col-xs-6">
+                <div class="description-block border-right">
+                    <span class="text-red"><i class="fas fa-plug"></i> 300<small>W</small></span>
+                    <h5 class="description-header">Huidig stroomverbruik</h5>
+                    <span class="description-text">Huidig stroomverbruik</span>
+                </div>
+            </div>
+            <div class="col-sm-3 col-xs-6">
+                <div class="description-block border-right">
+                    <span class="text-red"><i class="fas fa-plug"></i> €0,09<small>/u</small></span>
+                    <h5 class="description-header">Huidig stroomverbruik</h5>
+                    <span class="description-text">Huidig stroomverbruik</span>
+                </div>
+            </div>
+            <div class="col-sm-3 col-xs-6">
+                <div class="description-block border-right">
+                    <span class="text-blue"><i class="fas fa-plug"></i> 146<small>W</small></span>
+                    <h5 class="description-header">Huidig sluimerverbruik</h5>
+                    <span class="description-text">Huidig sluimerverbruik</span>
+                </div>
+            </div>
+            <div class="col-sm-3 col-xs-6">
+                <div class="description-block border-right">
+                    <span class="text-blue"><i class="fas fa-plug"></i> €0,05<small>/u</small></span>
+                    <h5 class="description-header">Huidig sluimerverbruik</h5>
+                    <span class="description-text">Huidig sluimerverbruik</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="box">
+    <div class="box-header with-border">
+        <h3 class="box-title"><i class="fas fa-thermometer-half"></i> Verwarming</h3>
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                <i class="fa fa-minus"></i>
+            </button>
+        </div>
+    </div>
+    <div class="box-body">
+
+    </div>
+    <div class="box-footer">
+
+    </div>
+</div>
+
+<div class="box">
+    <div class="box-header with-border">
+        <h3 class="box-title"><i class="far fa-lightbulb"></i> Verlichting</h3>
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                <i class="fa fa-minus"></i>
+            </button>
+        </div>
+    </div>
+    <div class="box-body">
+        <div class="row">
+            <div class="col-md-4 col-xs-12">
+                <div class="info-box bg-yellow">
+                    <span class="info-box-icon"><i class="fas fa-lightbulb"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Tafel</span>
+                        <span class="info-box-number">100<small>%</small></span>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 100%"></div>
+                        </div>
+                        <a href="#" class="info-box-footer">
+                            <i class="fas fa-toggle-on"></i> Klik om te verlichten aan 30%
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-12">
+                <div class="info-box bg-yellow">
+                    <span class="info-box-icon"><i class="fas fa-lightbulb"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Zetels</span>
+                        <span class="info-box-number">30<small>%</small></span>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 30%"></div>
+                        </div>
+                        <a href="#" class="info-box-footer">
+                            <i class="fas fa-toggle-on"></i> Klik om niet te verlichten
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-12">
+                <div class="info-box bg-gray">
+                    <span class="info-box-icon"><i class="far fa-lightbulb"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Staanlamp</span>
+                        <span class="info-box-number">0<small>%</small></span>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 0%"></div>
+                        </div>
+                        <a href="#" class="info-box-footer">
+                            <i class="fas fa-toggle-on"></i> Klik om te verlichten aan 100%
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="box">
+    <div class="box-header with-border">
+        <h3 class="box-title"><i class="fas fa-power-off"></i> Stopcontacten</h3>
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                <i class="fa fa-minus"></i>
+            </button>
+        </div>
+    </div>
+    <div class="box-body">
+        <div class="row">
+            <div class="col-lg-4 col-xs-12">
+                <div class="small-box bg-blue">
+                    <div class="inner">
+                        <h3>TV en Zever</h3>
+                        <p>96,3 W</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">
+                        <i class="fas fa-toggle-on"></i> Klik om uit te schakelen
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-xs-12">
+                <div class="small-box bg-blue">
+                    <div class="inner">
+                        <h3>NAS</h3>
+                        <p>196,9 W</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">
+                        <i class="fas fa-toggle-on"></i> Klik om uit te schakelen
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-xs-12">
+                <div class="small-box bg-gray">
+                    <div class="inner">
+                        <h3>Koelkast</h3>
+                        <p>79,4 W</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">
+                        <i class="fas fa-toggle-on"></i> Klik om in te schakelen
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        var ctx = document.getElementById("energyChart").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    });
+</script>
