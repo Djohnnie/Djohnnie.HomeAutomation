@@ -23,7 +23,7 @@ namespace Djohnnie.HomeAutomation.Web.Controllers
                 CurrentPower = new Random().Next(100, 5000)
             };
 
-            RestClient client = new RestClient("http://192.168.10.92/gateway/apipublic/reportInstantaneousValues");
+            RestClient client = new RestClient("http://192.168.10.191/gateway/apipublic/reportInstantaneousValues");
             var response = await client.ExecuteTaskAsync<Blablabla>(
                 new RestRequest(Method.GET) { RequestFormat = DataFormat.Json, OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; } });
             if (response.IsSuccessful && response.Data != null)

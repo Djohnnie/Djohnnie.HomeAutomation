@@ -1,9 +1,12 @@
 ﻿@model Djohnnie.HomeAutomation.Web.ViewModels.LivePowerUsageViewModel
 
 <div class="info-box">
-    <span class="info-box-icon bg-green"><i class="fas fa-plug"></i></span>
+    <span class="info-box-icon bg-green">
+        <a href="#power"><i class="fas fa-plug"></i></a>
+    </span>
     <div class="info-box-content">
         <span class="info-box-text">Elektriciteitsverbruik</span>
         <span class="info-box-number">@Model?.CurrentPower<small>W</small></span>
+        <span class="info-box-more">145<small>kWh</small> vandaag</span>
     </div>
 </div>

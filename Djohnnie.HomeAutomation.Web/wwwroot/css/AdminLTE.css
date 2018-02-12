@@ -1722,6 +1722,11 @@ a {
         padding: 10px;
     }
 
+    .small-box > .inner > a {
+        color: #fff;
+        text-decoration: none;
+    }
+
     .small-box > .small-box-footer {
         position: relative;
         text-align: center;
@@ -1784,7 +1789,7 @@ a {
             font-size: 95px;
         }
 
-@media (max-width: 767px) {
+/*@media (max-width: 767px) {
     .small-box {
         text-align: center;
     }
@@ -1796,7 +1801,7 @@ a {
         .small-box p {
             font-size: 12px;
         }
-}
+}*/
 /*
  * Component: Box
  * --------------
@@ -2434,6 +2439,11 @@ a {
         max-width: 100%;
     }
 
+    .info-box-icon > a {
+        color: #fff;
+        text-decoration: none;
+    }
+
 .info-box-content {
     padding: 5px 10px;
     margin-left: 90px;
@@ -2469,8 +2479,17 @@ a {
 }
 
 .info-box-content > .info-box-footer:hover {
-        color: #fff;
-    }
+    color: #fff;
+}
+
+.info-box > .info-box-icon {
+    color: #fff;
+    text-decoration: none;
+}
+
+.info-box > .info-box-icon:hover {
+    color: #fff;
+}
 
 .progress-description {
     margin: 0;
