@@ -61,20 +61,20 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue">
     <div class="wrapper">
         <!-- Main Header -->
         @await Component.InvokeAsync("Header")
         <!-- Left side column. contains the logo and sidebar -->
-        @await Component.InvokeAsync("Sidebar")
+        @*@await Component.InvokeAsync("Sidebar")*@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-            <section class="content-header">
+            @*<section class="content-header">
                 @await Component.InvokeAsync("PageHeader")
                 <br />
                 @await Component.InvokeAsync("PageAlert")
-            </section>
+            </section>*@
             <!-- Main content -->
             <section class="content">
                 <!-- Your Page Content Here -->
@@ -86,11 +86,11 @@ desired effect
         <!-- Main Footer -->
         @await Component.InvokeAsync("Footer")
         <!-- Control Sidebar -->
-        @await Component.InvokeAsync("ControlSidebar")
+        @*@await Component.InvokeAsync("ControlSidebar")*@
         <!-- /.control-sidebar -->
         <!-- Add the sidebar's background. This div must be placed
              immediately after the control sidebar -->
-        <div class="control-sidebar-bg"></div>
+        @*<div class="control-sidebar-bg"></div>*@
     </div>
     <!-- ./wrapper -->
     <!-- Optionally, you can add Slimscroll and FastClick plugins.

@@ -18,15 +18,6 @@
 <div class="row">
     <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="info-box">
-            <span class="info-box-icon bg-green"><i class="fas fa-plug"></i></span>
-            <div class="info-box-content">
-                <span class="info-box-text">Elektriciteitsverbruik</span>
-                <span class="info-box-number">1267<small>W</small></span>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="info-box">
             <span class="info-box-icon bg-red"><i class="fas fa-thermometer-half"></i></span>
             <div class="info-box-content">
                 <span class="info-box-text">Verwarming</span>
@@ -52,52 +43,9 @@
             </div>
         </div>
     </div>
-</div>
-
-<div class="box">
-    <div class="box-header with-border">
-        <h3 class="box-title"><i class="fas fa-plug"></i> Elektriciteitsverbruik</h3>
-        <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                <i class="fa fa-minus"></i>
-            </button>
-        </div>
-    </div>
-    <div class="box-body">
-        <div class="chart">
-            <canvas id="energyChart"></canvas>
-        </div>
-    </div>
-    <div class="box-footer">
-        <div class="row">
-            <div class="col-sm-3 col-xs-6">
-                <div class="description-block border-right">
-                    <span class="text-red"><i class="fas fa-plug"></i> 300<small>W</small></span>
-                    <h5 class="description-header">Huidig stroomverbruik</h5>
-                    <span class="description-text">Huidig stroomverbruik</span>
-                </div>
-            </div>
-            <div class="col-sm-3 col-xs-6">
-                <div class="description-block border-right">
-                    <span class="text-red"><i class="fas fa-plug"></i> €0,09<small>/u</small></span>
-                    <h5 class="description-header">Huidig stroomverbruik</h5>
-                    <span class="description-text">Huidig stroomverbruik</span>
-                </div>
-            </div>
-            <div class="col-sm-3 col-xs-6">
-                <div class="description-block border-right">
-                    <span class="text-blue"><i class="fas fa-plug"></i> 146<small>W</small></span>
-                    <h5 class="description-header">Huidig sluimerverbruik</h5>
-                    <span class="description-text">Huidig sluimerverbruik</span>
-                </div>
-            </div>
-            <div class="col-sm-3 col-xs-6">
-                <div class="description-block border-right">
-                    <span class="text-blue"><i class="fas fa-plug"></i> €0,05<small>/u</small></span>
-                    <h5 class="description-header">Huidig sluimerverbruik</h5>
-                    <span class="description-text">Huidig sluimerverbruik</span>
-                </div>
-            </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div id="livePowerUsage">
+            @Html.Partial("_LivePowerUsage")
         </div>
     </div>
 </div>
@@ -236,6 +184,54 @@
     </div>
 </div>
 
+<div class="box">
+    <div class="box-header with-border">
+        <h3 class="box-title"><i class="fas fa-plug"></i> Elektriciteitsverbruik</h3>
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                <i class="fa fa-minus"></i>
+            </button>
+        </div>
+    </div>
+    <div class="box-body">
+        <div class="chart">
+            <canvas id="energyChart"></canvas>
+        </div>
+    </div>
+    <div class="box-footer">
+        <div class="row">
+            <div class="col-sm-3 col-xs-6">
+                <div class="description-block border-right">
+                    <span class="text-red"><i class="fas fa-plug"></i> 300<small>W</small></span>
+                    <h5 class="description-header">Huidig stroomverbruik</h5>
+                    <span class="description-text">Huidig stroomverbruik</span>
+                </div>
+            </div>
+            <div class="col-sm-3 col-xs-6">
+                <div class="description-block border-right">
+                    <span class="text-red"><i class="fas fa-plug"></i> €0,09<small>/u</small></span>
+                    <h5 class="description-header">Huidig stroomverbruik</h5>
+                    <span class="description-text">Huidig stroomverbruik</span>
+                </div>
+            </div>
+            <div class="col-sm-3 col-xs-6">
+                <div class="description-block border-right">
+                    <span class="text-blue"><i class="fas fa-plug"></i> 146<small>W</small></span>
+                    <h5 class="description-header">Huidig sluimerverbruik</h5>
+                    <span class="description-text">Huidig sluimerverbruik</span>
+                </div>
+            </div>
+            <div class="col-sm-3 col-xs-6">
+                <div class="description-block border-right">
+                    <span class="text-blue"><i class="fas fa-plug"></i> €0,05<small>/u</small></span>
+                    <h5 class="description-header">Huidig sluimerverbruik</h5>
+                    <span class="description-text">Huidig sluimerverbruik</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     $(document).ready(function () {
         var ctx = document.getElementById("energyChart").getContext('2d');
@@ -275,5 +271,12 @@
                 }
             }
         });
+        refreshLivePowerUsage();
     });
+
+    function refreshLivePowerUsage() {
+        $('#livePowerUsage').load("@Url.Action("GetLivePowerUsage")", function () {
+            setTimeout(refreshLivePowerUsage, 2000);
+        });
+    }
 </script>
