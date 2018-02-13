@@ -1,0 +1,15 @@
+﻿@model Djohnnie.HomeAutomation.Web.ViewModels.LiveLightingOverviewViewModel
+
+<div class="info-box">
+    <span class="info-box-icon bg-yellow">
+        <a href="#lighting"><i class="far fa-lightbulb"></i></a>
+    </span>
+    <div class="info-box-content">
+        <span class="info-box-text">Verlichting</span>
+        @if (Model != null)
+        {
+            <span class="info-box-number">@Model.Lights.Count(l => l.IsOn)<small>/@Model.Lights.Count</small></span>
+            <span class="info-box-more">@String.Join(", ", Model.Lights.Select(l => l.Description))</span>
+        }
+    </div>
+</div>

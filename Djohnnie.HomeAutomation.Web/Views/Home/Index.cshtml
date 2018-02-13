@@ -17,39 +17,18 @@
 
 <div class="row">
     <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="info-box">
-            <span class="info-box-icon bg-red">
-                <a href="#heating"><i class="fas fa-thermometer-half"></i></a>
-            </span>
-            <div class="info-box-content">
-                <span class="info-box-text">Verwarming</span>
-                <span class="info-box-number">22<small>°C</small></span>
-                <span class="info-box-more">min 16<small>°C</small> - max 22<small>°C</small></span>
-            </div>
+        <div id="liveHeatingOverview">
+            @Html.Partial("_LiveHeatingOverview")
         </div>
     </div>
     <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="info-box">
-            <span class="info-box-icon bg-yellow">
-                <a href="#lighting"><i class="far fa-lightbulb"></i></a>
-            </span>
-            <div class="info-box-content">
-                <span class="info-box-text">Verlichting</span>
-                <span class="info-box-number">3<small>/3</small></span>
-                <span class="info-box-more">Tafel, Zetel, Staanlamp</span>
-            </div>
+        <div id="liveLightingOverview">
+            @Html.Partial("_LiveLightingOverview")
         </div>
     </div>
     <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="info-box">
-            <span class="info-box-icon bg-blue">
-                <a href="#plugs"><i class="fas fa-power-off"></i></a>
-            </span>
-            <div class="info-box-content">
-                <span class="info-box-text">Stopcontacten</span>
-                <span class="info-box-number">2<small>/3</small></span>
-                <span class="info-box-more">145<small>W</small> totaal</span>
-            </div>
+        <div id="livePlugsOverview">
+            @Html.Partial("_LivePlugsOverview")
         </div>
     </div>
     <div class="col-md-3 col-sm-6 col-xs-12">
@@ -321,14 +300,33 @@
                 }
             }
         });
+        refreshLiveHeatingOverview();
+        refreshLiveLightingOverview();
+        refreshLivePlugsOverview();
         refreshLivePowerUsage();
     });
 
+    function refreshLiveHeatingOverview() {
+        $('#liveHeatingOverview').load("@Url.Action("GetLiveHeatingOverview")", function () {
+            setTimeout(refreshLiveHeatingOverview, 10000);
+        });
+    }
+
+    function refreshLiveLightingOverview() {
+        $('#liveLightingOverview').load("@Url.Action("GetLiveLightingOverview")", function () {
+            setTimeout(refreshLiveLightingOverview, 2000);
+        });
+    }
+
+    function refreshLivePlugsOverview() {
+        $('#livePlugsOverview').load("@Url.Action("GetLivePlugsOverview")", function () {
+            setTimeout(refreshLivePlugsOverview, 2000);
+        });
+    }
+
     function refreshLivePowerUsage() {
-        /**/
         $('#livePowerUsage').load("@Url.Action("GetLivePowerUsage")", function () {
-        /**/
-        setTimeout(refreshLivePowerUsage, 2000);
-    });
-}
+            setTimeout(refreshLivePowerUsage, 2000);
+        });
+    }
 </script>

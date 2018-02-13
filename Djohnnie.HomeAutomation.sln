@@ -3,7 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Djohnnie.HomeAutomation.Web", "Djohnnie.HomeAutomation.Web\Djohnnie.HomeAutomation.Web.csproj", "{598925FA-C131-4DD5-BFEE-4296361C1C1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Djohnnie.HomeAutomation.Web", "Djohnnie.HomeAutomation.Web\Djohnnie.HomeAutomation.Web.csproj", "{598925FA-C131-4DD5-BFEE-4296361C1C1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Djohnnie.HomeAutomation.DataAccess.Lifx", "Djohnnie.HomeAutomation.DataAccess.Lifx\Djohnnie.HomeAutomation.DataAccess.Lifx.csproj", "{650951CA-8DD9-4B45-9366-03671F26DDC8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0. Solution Items", "0. Solution Items", "{BE0A1B49-883B-4DEF-8D9D-7E311C74A0D3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Presentation", "1. Presentation", "{FDD9B89D-F2B6-4D8E-8BCF-609C7D7E6A6F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Business Logic", "2. Business Logic", "{419A8993-64D7-418B-8017-F0103919C0CB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Data Access", "3. Data Access", "{2DFA508D-0FB2-48C4-8EF1-CD5F1FFB8B6A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +25,17 @@ Global
 		{598925FA-C131-4DD5-BFEE-4296361C1C1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{598925FA-C131-4DD5-BFEE-4296361C1C1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{598925FA-C131-4DD5-BFEE-4296361C1C1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{650951CA-8DD9-4B45-9366-03671F26DDC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{650951CA-8DD9-4B45-9366-03671F26DDC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{650951CA-8DD9-4B45-9366-03671F26DDC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{650951CA-8DD9-4B45-9366-03671F26DDC8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{598925FA-C131-4DD5-BFEE-4296361C1C1C} = {FDD9B89D-F2B6-4D8E-8BCF-609C7D7E6A6F}
+		{650951CA-8DD9-4B45-9366-03671F26DDC8} = {2DFA508D-0FB2-48C4-8EF1-CD5F1FFB8B6A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E2B92CA6-38B2-4C38-9140-8FD75918B322}

@@ -1,4 +1,5 @@
-﻿using Djohnnie.HomeAutomation.Web.ViewModels;
+﻿using Djohnnie.HomeAutomation.DataAccess.Lifx;
+using Djohnnie.HomeAutomation.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using RestSharp;
 using System;
@@ -10,6 +11,13 @@ namespace Djohnnie.HomeAutomation.Web.Controllers
 {
     public class HomeController : BaseController
     {
+        private ILightingRepository _lightingRepository;
+
+        public HomeController(ILightingRepository lightingRepository)
+        {
+            _lightingRepository = lightingRepository;
+        }
+
         public IActionResult Index()
         {
             AddPageHeader("Dashboard", "");
@@ -35,6 +43,32 @@ namespace Djohnnie.HomeAutomation.Web.Controllers
             }
 
             return PartialView("_LivePowerUsage", vm);
+        }
+
+        public Task<IActionResult> GetLiveHeatingOverview()
+        {
+            LiveHeatingOverviewViewModel vm = new LiveHeatingOverviewViewModel();
+            return Task.FromResult((IActionResult)PartialView("_LiveHeatingOverview", vm));
+        }
+
+        public async Task<IActionResult> GetLiveLightingOverview()
+        {
+            try
+            {
+                LiveLightingOverviewViewModel vm = new LiveLightingOverviewViewModel();
+                vm.Lights = await _lightingRepository.GetLights();
+                return PartialView("_LiveLightingOverview", vm);
+            }
+            catch
+            {
+                return PartialView("_LiveLightingOverview", new LiveLightingOverviewViewModel());
+            }
+        }
+
+        public Task<IActionResult> GetLivePlugsOverview()
+        {
+            LivePlugsOverviewViewModel vm = new LivePlugsOverviewViewModel();
+            return Task.FromResult((IActionResult)PartialView("_LivePlugsOverview", vm));
         }
     }
 
