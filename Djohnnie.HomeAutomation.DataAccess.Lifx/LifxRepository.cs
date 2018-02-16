@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 using Djohnnie.HomeAutomation.DataAccess.Lifx.Communication;
@@ -9,7 +7,7 @@ using Djohnnie.HomeAutomation.DataAccess.Lifx.Model;
 
 namespace Djohnnie.HomeAutomation.DataAccess.Lifx
 {
-    public class LightingRepository : ILightingRepository
+    public class LifxRepository : ILifxRepository
     {
         private LifxClient _lifxClient;
 

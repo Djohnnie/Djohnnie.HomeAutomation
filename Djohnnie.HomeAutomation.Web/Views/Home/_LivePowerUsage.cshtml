@@ -6,7 +6,7 @@
     </span>
     <div class="info-box-content">
         <span class="info-box-text">Elektriciteitsverbruik</span>
-        <span class="info-box-number">@Model?.CurrentPower<small>W</small></span>
-        <span class="info-box-more">145<small>kWh</small> vandaag</span>
+        <span class="info-box-number">@String.Format("{0:F0}", Model?.CurrentPower)<small>W</small></span>
+        <span class="info-box-more">@String.Format("{0:F3}", Model?.Consumption)<small>kWh</small> vandaag</span>
     </div>
 </div>

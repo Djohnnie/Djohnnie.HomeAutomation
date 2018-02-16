@@ -1,21 +1,23 @@
 ﻿using Djohnnie.HomeAutomation.DataAccess.Lifx;
 using Djohnnie.HomeAutomation.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using RestSharp;
 using System;
-using System.Globalization;
-using System.Text.RegularExpressions;
+using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
+using Djohnnie.HomeAutomation.DataAccess.Smappee;
 
 namespace Djohnnie.HomeAutomation.Web.Controllers
 {
     public class HomeController : BaseController
     {
-        private ILightingRepository _lightingRepository;
+        private ILifxRepository _lightingRepository;
+        private ISmappeeRepository _smappeeRepository;
 
-        public HomeController(ILightingRepository lightingRepository)
+        public HomeController(ILifxRepository lightingRepository, ISmappeeRepository smappeeRepository)
         {
             _lightingRepository = lightingRepository;
+            _smappeeRepository = smappeeRepository;
         }
 
         public IActionResult Index()
@@ -26,22 +28,11 @@ namespace Djohnnie.HomeAutomation.Web.Controllers
 
         public async Task<IActionResult> GetLivePowerUsage()
         {
-            LivePowerUsageViewModel vm = new LivePowerUsageViewModel()
-            {
-                CurrentPower = new Random().Next(100, 5000)
-            };
-
-            RestClient client = new RestClient("http://192.168.10.191/gateway/apipublic/reportInstantaneousValues");
-            var response = await client.ExecuteTaskAsync<Blablabla>(
-                new RestRequest(Method.GET) { RequestFormat = DataFormat.Json, OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; } });
-            if (response.IsSuccessful && response.Data != null)
-            {
-                foreach (Match m in Regex.Matches(response.Data.Report, @"activePower=(\d*\.?\d+) W"))
-                {
-                    vm.CurrentPower = (int)Math.Round(Convert.ToDecimal(m.Groups[1].Value, CultureInfo.InvariantCulture));
-                }
-            }
-
+            LivePowerUsageViewModel vm = new LivePowerUsageViewModel();
+            var livePowerUsage = await _smappeeRepository.GetLivePowerUsage("192.168.10.191");
+            vm.CurrentPower = livePowerUsage.ActivePower;
+            var powerConsumption = await _smappeeRepository.GetPowerConsumptionToday("28607", "3833a9f3-b773-3b35-a0a2-9ca6c9dc3611");
+            vm.Consumption = powerConsumption.Consumptions.Single().Consumption / 1000M;
             return PartialView("_LivePowerUsage", vm);
         }
 

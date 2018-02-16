@@ -4,9 +4,10 @@ namespace Djohnnie.HomeAutomation.DataAccess.Lifx
 {
     public static class ServiceCollectionExtensions
     {
-        public static void AddDataAccessLifx(this IServiceCollection serviceCollection)
+        public static IServiceCollection AddDataAccessLifx(this IServiceCollection serviceCollection)
         {
-            serviceCollection.AddSingleton<ILightingRepository, LightingRepository>();
+            serviceCollection.AddSingleton<ILifxRepository, LifxRepository>();
+            return serviceCollection;
         }
     }
 }
