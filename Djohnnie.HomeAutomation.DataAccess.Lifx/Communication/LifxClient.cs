@@ -128,6 +128,7 @@ namespace Djohnnie.HomeAutomation.DataAccess.Lifx.Communication
             if (hostName == null)
             {
                 hostName = "192.168.10.255";
+                //hostName = "255.255.255.255";
             }
             TaskCompletionSource<T> tcs = null;
             if (//header.AcknowledgeRequired && 

@@ -23,11 +23,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Djohnnie.HomeAutomation.Uti
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Djohnnie.HomeAutomation.Management", "Djohnnie.HomeAutomation.Management\Djohnnie.HomeAutomation.Management.csproj", "{931E600D-A734-4DEF-8FF8-159096C34B0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Djohnnie.HomeAutomation.DataAccess.Hs110", "Djohnnie.HomeAutomation.DataAccess.Hs110\Djohnnie.HomeAutomation.DataAccess.Hs110.csproj", "{3AF343D0-9E42-45C7-A496-730E21825104}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Djohnnie.HomeAutomation.DataAccess.Hs110", "Djohnnie.HomeAutomation.DataAccess.Hs110\Djohnnie.HomeAutomation.DataAccess.Hs110.csproj", "{3AF343D0-9E42-45C7-A496-730E21825104}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Djohnnie.HomeAutomation.DataAccess.Nest", "Djohnnie.HomeAutomation.DataAccess.Nest\Djohnnie.HomeAutomation.DataAccess.Nest.csproj", "{EE1B9A3F-A24B-4712-8BBE-6927EE1C2E93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Djohnnie.HomeAutomation.DataAccess.Nest", "Djohnnie.HomeAutomation.DataAccess.Nest\Djohnnie.HomeAutomation.DataAccess.Nest.csproj", "{EE1B9A3F-A24B-4712-8BBE-6927EE1C2E93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Djohnnie.HomeAutomation.DataAccess.Smappee", "Djohnnie.HomeAutomation.DataAccess.Smappee\Djohnnie.HomeAutomation.DataAccess.Smappee.csproj", "{DC886C48-37EA-41EC-8026-38D474233ACC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Djohnnie.HomeAutomation.DataAccess.Smappee", "Djohnnie.HomeAutomation.DataAccess.Smappee\Djohnnie.HomeAutomation.DataAccess.Smappee.csproj", "{DC886C48-37EA-41EC-8026-38D474233ACC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Djohnnie.HomeAutomation.Discoverer", "Djohnnie.HomeAutomation.Discoverer\Djohnnie.HomeAutomation.Discoverer.csproj", "{BE82E291-2538-41AB-8104-93CF3B4E3335}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +73,10 @@ Global
 		{DC886C48-37EA-41EC-8026-38D474233ACC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC886C48-37EA-41EC-8026-38D474233ACC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC886C48-37EA-41EC-8026-38D474233ACC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE82E291-2538-41AB-8104-93CF3B4E3335}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE82E291-2538-41AB-8104-93CF3B4E3335}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE82E291-2538-41AB-8104-93CF3B4E3335}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE82E291-2538-41AB-8104-93CF3B4E3335}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -84,6 +90,7 @@ Global
 		{3AF343D0-9E42-45C7-A496-730E21825104} = {2DFA508D-0FB2-48C4-8EF1-CD5F1FFB8B6A}
 		{EE1B9A3F-A24B-4712-8BBE-6927EE1C2E93} = {2DFA508D-0FB2-48C4-8EF1-CD5F1FFB8B6A}
 		{DC886C48-37EA-41EC-8026-38D474233ACC} = {2DFA508D-0FB2-48C4-8EF1-CD5F1FFB8B6A}
+		{BE82E291-2538-41AB-8104-93CF3B4E3335} = {FDD9B89D-F2B6-4D8E-8BCF-609C7D7E6A6F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E2B92CA6-38B2-4C38-9140-8FD75918B322}

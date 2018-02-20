@@ -8,6 +8,6 @@ namespace Djohnnie.HomeAutomation.DataAccess.Smappee
     {
         Task<LivePowerUsage> GetLivePowerUsage(String hostName);
 
-        Task<PowerConsumptionList> GetPowerConsumptionToday(String serviceLocation, String token);
+        Task<PowerConsumptionList> GetPowerConsumptionToday();
     }
 }

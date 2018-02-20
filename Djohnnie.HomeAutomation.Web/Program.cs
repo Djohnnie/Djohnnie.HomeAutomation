@@ -7,7 +7,7 @@ namespace Djohnnie.HomeAutomation.Web
         public static void Main(string[] args)
         {
             var host = new WebHostBuilder()
-                .UseUrls("http://*:5000")
+                .UseUrls("http://*:8888")
                 .UseKestrel()
                 .UseIISIntegration()
                 .UseStartup<Startup>()

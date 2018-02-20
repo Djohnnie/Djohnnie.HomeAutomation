@@ -2,22 +2,24 @@
 using Djohnnie.HomeAutomation.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Djohnnie.HomeAutomation.DataAccess.Nest;
 using Djohnnie.HomeAutomation.DataAccess.Smappee;
 
 namespace Djohnnie.HomeAutomation.Web.Controllers
 {
     public class HomeController : BaseController
     {
-        private ILifxRepository _lightingRepository;
-        private ISmappeeRepository _smappeeRepository;
+        private readonly ILifxRepository _lightingRepository;
+        private readonly ISmappeeRepository _smappeeRepository;
+        private readonly INestRepository _nestRepository;
 
-        public HomeController(ILifxRepository lightingRepository, ISmappeeRepository smappeeRepository)
+        public HomeController(ILifxRepository lightingRepository, ISmappeeRepository smappeeRepository, INestRepository nestRepository)
         {
             _lightingRepository = lightingRepository;
             _smappeeRepository = smappeeRepository;
+            _nestRepository = nestRepository;
         }
 
         public IActionResult Index()
@@ -28,18 +30,37 @@ namespace Djohnnie.HomeAutomation.Web.Controllers
 
         public async Task<IActionResult> GetLivePowerUsage()
         {
-            LivePowerUsageViewModel vm = new LivePowerUsageViewModel();
-            var livePowerUsage = await _smappeeRepository.GetLivePowerUsage("192.168.10.191");
-            vm.CurrentPower = livePowerUsage.ActivePower;
-            var powerConsumption = await _smappeeRepository.GetPowerConsumptionToday("28607", "3833a9f3-b773-3b35-a0a2-9ca6c9dc3611");
-            vm.Consumption = powerConsumption.Consumptions.Single().Consumption / 1000M;
-            return PartialView("_LivePowerUsage", vm);
+            try
+            {
+                LivePowerUsageViewModel vm = new LivePowerUsageViewModel();
+                var livePowerUsage = await _smappeeRepository.GetLivePowerUsage("192.168.10.191");
+                vm.CurrentPower = livePowerUsage.ActivePower;
+                var powerConsumption = await _smappeeRepository.GetPowerConsumptionToday();
+                vm.Consumption = (powerConsumption.Consumptions.SingleOrDefault()?.Consumption ?? 0) / 1000M;
+                return PartialView("_LivePowerUsage", vm);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
         }
 
-        public Task<IActionResult> GetLiveHeatingOverview()
+        public async Task<IActionResult> GetLiveHeatingOverview()
         {
-            LiveHeatingOverviewViewModel vm = new LiveHeatingOverviewViewModel();
-            return Task.FromResult((IActionResult)PartialView("_LiveHeatingOverview", vm));
+            try
+            {
+                LiveHeatingOverviewViewModel vm = new LiveHeatingOverviewViewModel();
+                var heating = await _nestRepository.GetCurrentHeating();
+                vm.CurrentTemperature = heating.AmbientTemperatureC;
+                vm.CurrentHumidity = heating.Humidity;
+                return PartialView("_LiveHeatingOverview", vm);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
         }
 
         public async Task<IActionResult> GetLiveLightingOverview()
@@ -50,9 +71,10 @@ namespace Djohnnie.HomeAutomation.Web.Controllers
                 vm.Lights = await _lightingRepository.GetLights();
                 return PartialView("_LiveLightingOverview", vm);
             }
-            catch
+            catch (Exception ex)
             {
-                return PartialView("_LiveLightingOverview", new LiveLightingOverviewViewModel());
+                Console.WriteLine(ex.Message);
+                throw;
             }
         }
 

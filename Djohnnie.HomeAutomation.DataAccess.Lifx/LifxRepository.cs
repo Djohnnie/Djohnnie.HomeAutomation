@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.NetworkInformation;
 using System.Threading.Tasks;
@@ -40,7 +41,7 @@ namespace Djohnnie.HomeAutomation.DataAccess.Lifx
 
         private void LifxClient_DeviceDiscovered(object sender, LifxClient.DeviceDiscoveryEventArgs e)
         {
-            Debug.WriteLine(e.Device.HostName);
+            Console.WriteLine($"Device discovered: {e.Device.HostName}");
         }
     }
 }
